@@ -1,6 +1,7 @@
 #include <iostream>
-
 #include "Level.hpp"
+#include "Renderer.hpp"
+#include <exception>
 
 int main(int argc, char* argv[]) {
     if (argc<2) {
@@ -10,6 +11,8 @@ int main(int argc, char* argv[]) {
 
     try {
         Level level(argv[1]);
+        Renderer renderer;
+        renderer.draw(level);
     }
     catch (const std::exception& e) {
         std::cerr << "Exception: " << e.what() << std::endl;

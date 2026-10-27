@@ -7,6 +7,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_executable(Sokoban
         src/main.cpp
         src/Level.cpp
+        src/Renderer.cpp
+        src/Renderer.hpp
 )
 
 target_compile_options(Sokoban PRIVATE -Wall -Wextra -pedantic)

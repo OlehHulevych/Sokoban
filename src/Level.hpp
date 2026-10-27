@@ -15,6 +15,8 @@ public:
     void moveBox(Position from, Position to);
     void setPlayer(Position p);
     bool isSolved() const;
+    int getRows() const;
+    int getCols() const;
 
 private:
     std::set<Position> walls_, targets_, boxes_;

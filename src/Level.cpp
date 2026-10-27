@@ -65,6 +65,10 @@ void Level::setPlayer(Position p) {
     player_ = p;
 }
 
+int Level::getRows() const { return rows_; }
+int Level::getCols() const { return cols_; }
+
+
 bool Level::isSolved() const {
     for (const Position &b : boxes_) {
         if (targets_.count(b) == 0) return false;
