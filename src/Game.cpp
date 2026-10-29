@@ -69,25 +69,37 @@ void Game::outputLoop() {
     }
 }
 
+void Game::undo() {
+    if (history_.empty()) {
+        return;
+    }
+    level_ = history_.back();
+    history_.pop_back();
+    --moves_;
+}
+
 bool Game::tryMove(Position dir) {
     Position next = level_.getPlayer() + dir;
+    Position beyond = next + dir;
 
     if (level_.isWall(next)) {
         return false;
     }
-
-    if (level_.hasBox(next)) {
-        Position beyond = next + dir;
-        if (level_.isWall(beyond) || level_.hasBox(beyond)) {
-            return false;
-        }
-        level_.moveBox(next, beyond);
+    bool push = level_.hasBox(next);
+    if (push && (level_.isWall(beyond) || level_.hasBox(beyond))) {
+        return false;
     }
 
+    history_.push_back(level_);
+
+    if (push) {
+        level_.moveBox(next, beyond);
+    }
     level_.setPlayer(next);
     ++moves_;
     return true;
 }
+
 
 
 
@@ -99,6 +111,7 @@ void Game::handleCommand(char c) {
         case 'd': tryMove({0, 1});  break;
         case 'r': restart();        break;
         case 'q': running_ = false; break;
+        case 'u': undo(); break;
         default:                    break;
     }
 }
@@ -106,6 +119,7 @@ void Game::handleCommand(char c) {
 void Game::restart() {
     level_ = initial_;
     moves_ = 0;
+    history_.clear();
 }
 
 const Level &Game::getLevel() const {
@@ -114,4 +128,8 @@ const Level &Game::getLevel() const {
 
 int Game::getMoves() const {
     return moves_;
+}
+
+bool Game::isSolved() const {
+    return level_.isSolved();
 }

@@ -11,5 +11,7 @@ add_executable(Sokoban
         src/Game.cpp
 )
 
+find_package(Threads REQUIRED)
+target_link_libraries(Sokoban PRIVATE Threads::Threads)
 
 target_compile_options(Sokoban PRIVATE -Wall -Wextra -pedantic)

@@ -1,5 +1,5 @@
 #pragma once
-
+#include <vector>
 #include "Level.hpp"
 #include "Renderer.hpp"
 #include <mutex>
@@ -12,6 +12,7 @@ public:
     bool tryMove(Position dir);
     const Level &getLevel() const;
     int getMoves() const;
+    bool isSolved() const;
 private:
     void inputLoop();
     void computeLoop();
@@ -27,4 +28,7 @@ private:
     Renderer renderer_;
     int moves_ = 0;
     bool running_ = true;
+    void undo();
+    std::vector<Level> history_;
+
 };
