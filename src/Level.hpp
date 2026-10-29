@@ -22,4 +22,7 @@ private:
     std::set<Position> walls_, targets_, boxes_;
     Position player_{};
     int rows_ = 0, cols_ = 0;
+
+
+
 };

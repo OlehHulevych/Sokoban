@@ -6,7 +6,7 @@ void Renderer::draw(const Level &level) const {
         for (int col = 0; col < level.getCols(); ++col) {
             drawCell(level, Position{row, col});
         }
-        std::cout << '\n';
+        std::cout << "\r\n";
     }
 }
 

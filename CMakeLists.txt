@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 4.3)
+cmake_minimum_required(VERSION 4.2.3)
 project(Sokoban CXX)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -8,7 +8,8 @@ add_executable(Sokoban
         src/main.cpp
         src/Level.cpp
         src/Renderer.cpp
-        src/Renderer.hpp
+        src/Game.cpp
 )
+
 
 target_compile_options(Sokoban PRIVATE -Wall -Wextra -pedantic)
