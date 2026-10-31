@@ -5,8 +5,15 @@
 #include <chrono>
 #include "Level.hpp"
 #include "Game.hpp"
+#include "Score.hpp"
+
+std::string levelName(const std::string &path) {
+    std::size_t pos = path.find_last_of("/\\");
+    return pos == std::string::npos ? path : path.substr(pos + 1);
+}
 
 int main(int argc, char *argv[]) {
+    Score scores("scores.txt");
     if (argc < 2) {
         std::cerr << "Usage: " << argv[0] << " <level file>\n";
         return 1;
@@ -18,8 +25,12 @@ int main(int argc, char *argv[]) {
             Level level(argv[i]);
             Game game(level);
             game.run();
+            std::string name = levelName(argv[i]);
             if (!game.isSolved()) {
                 break;
+            }
+            if (scores.update(name, game.getMoves())) {
+                scores.save();
             }
 
             if (i+1<argc) {
@@ -38,3 +49,5 @@ int main(int argc, char *argv[]) {
     }
     return 0;
 }
+
+

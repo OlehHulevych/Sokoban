@@ -9,6 +9,8 @@ add_executable(Sokoban
         src/Level.cpp
         src/Renderer.cpp
         src/Game.cpp
+        src/Score.cpp
+        src/Score.hpp
 )
 
 find_package(Threads REQUIRED)
