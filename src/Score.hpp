@@ -11,7 +11,7 @@
 class Score {
 public:
     explicit Score(const std::string &filePath);
-    int best(const std::string &level);
+    int best(const std::string &level) const;
     bool update(const std::string &level, int moves);
     void save() const;
 private:

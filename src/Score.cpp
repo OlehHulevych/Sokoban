@@ -7,7 +7,7 @@ Score::Score(const std::string &filePath): filePath_(filePath) {
    load();
 }
 
-int Score::best(const std::string &level)  {
+int Score::best(const std::string &level) const  {
     auto it = scores_.find(level);
     if (it == scores_.end()) {
         return -1;
