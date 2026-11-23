@@ -13,6 +13,7 @@ public:
     const Level &getLevel() const;
     int getMoves() const;
     bool isSolved() const;
+    void handleCommand(char c);
 private:
     void inputLoop();
     void computeLoop();
@@ -22,7 +23,6 @@ private:
     bool dirty_=true;
     int elapsed_ = 0;
     void restart();
-    void handleCommand(char c);
     Level level_;
     Level initial_;
     Renderer renderer_;

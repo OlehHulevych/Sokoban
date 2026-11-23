@@ -12,6 +12,7 @@
 
   namespace {
 
+
   std::string levelName(const std::string &path) {
       std::size_t pos = path.find_last_of("/\\");
       return pos == std::string::npos ? path : path.substr(pos + 1);

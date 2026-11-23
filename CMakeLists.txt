@@ -22,6 +22,8 @@ target_compile_options(Sokoban PRIVATE -Wall -Wextra -pedantic)
 
 add_executable(tests
         tests/test_main.cpp
-        tests/test_game.cpp)
+        tests/test_game.cpp
+        tests/test_level.cpp
+        tests/test_score.cpp)
 target_link_libraries(tests PRIVATE sokoban_core)
 target_compile_definitions(tests PRIVATE LEVELS_DIR="${CMAKE_SOURCE_DIR}/levels")

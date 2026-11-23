@@ -20,14 +20,14 @@ Level::Level(const std::string &path) {
             Position p {row, col};
             char c = line[col];
             if (c=='#') walls_.insert(p);
-            if (c=='.') targets_.insert(p);
+            if (c == '.' || c == '*' || c == '+') targets_.insert(p);
             if (c == '$' || c == '*')boxes_.insert(p);
             if (c=='@' || c=='+') {
                 player_ = p;
                 foundPlayer = true;
             }
         }
-        if (static_cast<int>(line.size()) > 2) cols_ = static_cast<int>(line.size());
+        if (static_cast<int>(line.size()) > cols_) cols_ = static_cast<int>(line.size());
         ++row;
 
     }
