@@ -1,2 +1,2 @@
 level1.txt 1
-level2.txt 32
+level2.txt 26
